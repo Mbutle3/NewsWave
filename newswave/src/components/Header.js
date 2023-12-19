@@ -66,7 +66,7 @@ function Header() {
               aria-controls="menu-appbar"
               popup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="#000"
             >
               <MenuIcon />
             </IconButton>
@@ -112,12 +112,12 @@ function Header() {
           {/* Search and Categories Icons */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Search">
-              <IconButton sx={{ p: 0 }} color="inherit">
+              <IconButton sx={{ p: 0 }} color="#000">
                 <SearchIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Categories">
-              <IconButton sx={{ p: 0 }} color="inherit">
+              <IconButton sx={{ p: 0 }} color="#000">
                 <CategoryIcon />
               </IconButton>
             </Tooltip>
