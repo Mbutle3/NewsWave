@@ -31,7 +31,7 @@ function Header() {
     <AppBar position="static" sx={{ backgroundColor: "#EFEFEF" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <div
+          <Box
             style={{
               display: "flex",
               alignItems: "center",
@@ -58,7 +58,7 @@ function Header() {
             >
               NewsWave
             </Typography>
-          </div>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
