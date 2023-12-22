@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/system";
+import { Box, styled } from "@mui/system";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
@@ -25,7 +25,7 @@ function Footer() {
   };
 
   return (
-    <div style={{ position: "fixed", bottom: 0, width: "100%" }}>
+    <Box style={{ position: "fixed", bottom: 0, width: "100%" }}>
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
@@ -76,7 +76,7 @@ function Footer() {
           selected={value === 7}
         />
       </BottomNavigation>
-    </div>
+    </Box>
   );
 }
 

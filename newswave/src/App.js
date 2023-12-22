@@ -1,14 +1,16 @@
 import * as React from "react";
 import Header from "./components/Header";
+import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import { Box } from "@mui/system";
 
 function App() {
   return (
-    <div className="App">
+    <Box className="App">
       <Header />
-      <p>Hello World</p>
+      <Home />
       <Footer />
-    </div>
+    </Box>
   );
 }
 
