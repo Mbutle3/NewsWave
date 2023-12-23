@@ -2,9 +2,7 @@ import React from "react";
 import { Box, styled } from "@mui/system";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
@@ -33,47 +31,38 @@ function Footer() {
           handleIconClick(newValue);
         }}
         showLabels
-        style={{ justifyContent: "flex-start" }}
+        style={{ justifyContent: "flex-end", marginRight: "12em" }}
       >
-        <StyledBottomNavigationAction
-          label="Home"
-          icon={<HomeIcon />}
-          selected={value === 0}
-        />
         <StyledBottomNavigationAction
           label="Favorites"
           icon={<FavoriteIcon />}
-          selected={value === 1}
+          selected={value === 0}
         />
         <StyledBottomNavigationAction
           label="Support"
           icon={<HelpCenterIcon />}
-          selected={value === 2}
+          selected={value === 1}
         />
-        <StyledBottomNavigationAction
-          label="Local"
-          icon={<LocationOnIcon />}
-          selected={value === 3}
-        />
+
         <StyledBottomNavigationAction
           label="Unsubscribe"
           icon={<UnsubscribeIcon />}
-          selected={value === 4}
+          selected={value === 3}
         />
         <StyledBottomNavigationAction
           label="Account"
           icon={<AccountBoxIcon />}
-          selected={value === 5}
+          selected={value === 4}
         />
         <StyledBottomNavigationAction
           label="Accessibility"
           icon={<AccessibilityIcon />}
-          selected={value === 6}
+          selected={value === 5}
         />
         <StyledBottomNavigationAction
           label="Apply Here"
           icon={<WorkIcon />}
-          selected={value === 7}
+          selected={value === 6}
         />
       </BottomNavigation>
     </Box>
