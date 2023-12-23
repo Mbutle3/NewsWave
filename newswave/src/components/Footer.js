@@ -2,20 +2,14 @@ import React from "react";
 import { Box, styled } from "@mui/system";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import AccessibilityIcon from "@mui/icons-material/Accessibility";
-import HelpCenterIcon from "@mui/icons-material/HelpCenter";
-import WorkIcon from "@mui/icons-material/Work";
-import UnsubscribeIcon from "@mui/icons-material/Unsubscribe";
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)(
   ({ theme, selected }) => ({
-    color: selected ? "#7ed956" : "grey",
+    color: selected ? "#7ED956" : "grey",
   })
 );
 
-function Footer() {
+const Footer = () => {
   const [value, setValue] = React.useState(0);
 
   const handleIconClick = (newValue) => {
@@ -31,42 +25,30 @@ function Footer() {
           handleIconClick(newValue);
         }}
         showLabels
-        style={{ justifyContent: "flex-end", marginRight: "12em" }}
+        style={{ justifyContent: "center" }}
       >
         <StyledBottomNavigationAction
           label="Favorites"
-          icon={<FavoriteIcon />}
           selected={value === 0}
         />
-        <StyledBottomNavigationAction
-          label="Support"
-          icon={<HelpCenterIcon />}
-          selected={value === 1}
-        />
+        <StyledBottomNavigationAction label="Support" selected={value === 1} />
 
         <StyledBottomNavigationAction
           label="Unsubscribe"
-          icon={<UnsubscribeIcon />}
           selected={value === 3}
         />
-        <StyledBottomNavigationAction
-          label="Account"
-          icon={<AccountBoxIcon />}
-          selected={value === 4}
-        />
+        <StyledBottomNavigationAction label="Account" selected={value === 4} />
         <StyledBottomNavigationAction
           label="Accessibility"
-          icon={<AccessibilityIcon />}
           selected={value === 5}
         />
         <StyledBottomNavigationAction
           label="Apply Here"
-          icon={<WorkIcon />}
           selected={value === 6}
         />
       </BottomNavigation>
     </Box>
   );
-}
+};
 
 export default Footer;
