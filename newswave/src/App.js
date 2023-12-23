@@ -22,7 +22,7 @@ function App() {
           <Route path="/ArticleDetail" element={<ArticleDetail />} />
           <Route path="/Category" element={<Category />} />
           <Route path="/Local" element={<Local />} />
-          <Route path="/Local" element={<LatestNews />} />
+          <Route path="/latest-news" element={<LatestNews />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
