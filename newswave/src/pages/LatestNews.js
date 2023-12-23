@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Container } from "@mui/system";
 import { Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-function NotFoundPage() {
+function LatestNews() {
   return (
     <Container style={{ marginTop: "3em" }}>
       <Box>
@@ -46,4 +46,4 @@ function NotFoundPage() {
   );
 }
 
-export default NotFoundPage;
+export default LatestNews;
