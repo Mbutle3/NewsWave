@@ -7,7 +7,7 @@ function Home() {
   return (
     <Container style={{ marginTop: "3em" }}>
       <Box>
-        <Paper>
+        <Paper elevation={5}>
           <Grid2
             container
             rowSpacing={1}
@@ -28,7 +28,7 @@ function Home() {
             <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
               <Paper elevation={3}>4</Paper>
             </Grid2>
-            <Grid2 item xs={12} sx={{ width: "100$", height: "100px" }}>
+            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
               <Paper elevation={3}>5</Paper>
             </Grid2>
             <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
