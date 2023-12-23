@@ -20,9 +20,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/ArticleDetail" element={<ArticleDetail />} />
-          <Route path="/Category" element={<Category />} />
-          <Route path="/Local" element={<Local />} />
+          <Route path="/article-detail" element={<ArticleDetail />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/local" element={<Local />} />
           <Route path="/latest-news" element={<LatestNews />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
