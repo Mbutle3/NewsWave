@@ -105,6 +105,9 @@ function Header() {
               Categories
             </Button>
             <Button sx={{ my: 2, color: "#000", display: "block" }}>
+              Local
+            </Button>
+            <Button sx={{ my: 2, color: "#000", display: "block" }}>
               Latest News
             </Button>
           </Box>
