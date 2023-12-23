@@ -11,11 +11,11 @@ import UnsubscribeIcon from "@mui/icons-material/Unsubscribe";
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)(
   ({ theme, selected }) => ({
-    color: selected ? "#7ed956" : "grey",
+    color: selected ? "#7ED956" : "grey",
   })
 );
 
-function Footer() {
+const Footer = () => {
   const [value, setValue] = React.useState(0);
 
   const handleIconClick = (newValue) => {
@@ -67,6 +67,6 @@ function Footer() {
       </BottomNavigation>
     </Box>
   );
-}
+};
 
 export default Footer;
