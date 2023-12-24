@@ -2,19 +2,29 @@ import React from "react";
 import { Box, styled } from "@mui/system";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import { useLocation } from "react-router-dom";
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)(
   ({ theme, selected }) => ({
     color: selected ? "#7ED956" : "grey",
+    "& .MuiBottomNavigationAction-label": {
+      color: selected ? "#7ED956" : "grey",
+    },
   })
 );
 
 const Footer = () => {
-  const [value, setValue] = React.useState(0);
+  const location = useLocation();
+  const [value, setValue] = React.useState(-1);
 
   const handleIconClick = (newValue) => {
     setValue(newValue);
   };
+
+  React.useEffect(() => {
+    // Reset the selected state when the location changes (page navigation)
+    setValue(-1);
+  }, [location.pathname]);
 
   return (
     <Box style={{ position: "fixed", bottom: 0, width: "100%" }}>
@@ -29,22 +39,21 @@ const Footer = () => {
       >
         <StyledBottomNavigationAction
           label="Favorites"
-          selected={value === 0}
+          selected={value === -1}
         />
-        <StyledBottomNavigationAction label="Support" selected={value === 1} />
-
+        <StyledBottomNavigationAction label="Support" selected={value === 0} />
         <StyledBottomNavigationAction
           label="Unsubscribe"
-          selected={value === 3}
+          selected={value === 2}
         />
-        <StyledBottomNavigationAction label="Account" selected={value === 4} />
+        <StyledBottomNavigationAction label="Account" selected={value === 3} />
         <StyledBottomNavigationAction
           label="Accessibility"
-          selected={value === 5}
+          selected={value === 4}
         />
         <StyledBottomNavigationAction
           label="Apply Here"
-          selected={value === 6}
+          selected={value === 5}
         />
       </BottomNavigation>
     </Box>

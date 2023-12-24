@@ -12,7 +12,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Local from "./pages/Local";
 import LatestNews from "./pages/LatestNews";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Box className="App">
@@ -30,6 +30,6 @@ function App() {
       </Box>
     </Router>
   );
-}
+};
 
 export default App;

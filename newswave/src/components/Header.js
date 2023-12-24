@@ -13,8 +13,9 @@ import { Link } from "react-router-dom";
 
 const categories = ["Politics", "Business", "Technology", "Health", "Science"];
 
-function Header() {
+const Header = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
+  const [value, setValue] = React.useState(0);
 
   const handleToggleDrawer = () => {
     setOpenDrawer(!openDrawer);
@@ -57,7 +58,6 @@ function Header() {
           </Typography>
         </Box>
 
-        {/* Responsive Menu Button */}
         <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
           <IconButton
             size="large"
@@ -83,21 +83,48 @@ function Header() {
           </Drawer>
         </Box>
 
-        {/* Main Navigation Links */}
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          <Button sx={{ my: 2, color: "#000" }} component={Link} to="/">
+          <Button
+            sx={{
+              my: 2,
+              color: value === 0 ? "#7ED956" : "#000",
+            }}
+            component={Link}
+            to="/"
+            onClick={() => setValue(0)}
+          >
             Home
           </Button>
-          <Button sx={{ my: 2, color: "#000" }} component={Link} to="/category">
+          <Button
+            sx={{
+              my: 2,
+              color: value === 1 ? "#7ED956" : "#000",
+            }}
+            component={Link}
+            to="/category"
+            onClick={() => setValue(1)}
+          >
             Categories
           </Button>
-          <Button sx={{ my: 2, color: "#000" }} component={Link} to="/local">
+          <Button
+            sx={{
+              my: 2,
+              color: value === 2 ? "#7ED956" : "#000",
+            }}
+            component={Link}
+            to="/local"
+            onClick={() => setValue(2)}
+          >
             Local
           </Button>
           <Button
-            sx={{ my: 2, color: "#000" }}
+            sx={{
+              my: 2,
+              color: value === 3 ? "#7ED956" : "#000",
+            }}
             component={Link}
             to="/latest-news"
+            onClick={() => setValue(3)}
           >
             Latest News
           </Button>
@@ -105,6 +132,6 @@ function Header() {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default Header;

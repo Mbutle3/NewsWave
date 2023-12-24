@@ -3,7 +3,7 @@ import { Box, Container } from "@mui/system";
 import { Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import Article from "../components/Article";
-function Home() {
+const Home = () => {
   return (
     <Container style={{ marginTop: "3em" }}>
       <Box>
@@ -61,6 +61,6 @@ function Home() {
       </Box>
     </Container>
   );
-}
+};
 
 export default Home;
