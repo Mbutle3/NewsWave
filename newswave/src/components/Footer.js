@@ -2,22 +2,46 @@ import React from "react";
 import { Box, styled } from "@mui/system";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import { useLocation, Link } from "react-router-dom";
+
+const navItems = [
+  { label: "Favorites", path: "/favorites" },
+  { label: "Support", path: "/support" },
+  { label: "Unsubscribe", path: "/unsubscribe" },
+  { label: "Account", path: "/account" },
+  { label: "Accessibility", path: "/accessibility" },
+  { label: "Apply Here", path: "/apply" },
+];
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)(
   ({ theme, selected }) => ({
-    color: selected ? "#7ED956" : "grey",
+    color: selected ? "grey" : theme.palette.text.primary, // Set to grey when selected, use theme color otherwise
+    "& .MuiBottomNavigationAction-label": {
+      color: selected ? "grey" : theme.palette.text.primary,
+    },
   })
 );
 
 const Footer = () => {
-  const [value, setValue] = React.useState(0);
+  const location = useLocation();
+  const [value, setValue] = React.useState(
+    navItems.findIndex((item) => item.path === location.pathname)
+  );
 
   const handleIconClick = (newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Box style={{ position: "fixed", bottom: 0, width: "100%" }}>
+    <Box
+      sx={{
+        position: "fixed",
+        bottom: 0,
+        height: "35px",
+        width: "100%",
+        zIndex: 1000,
+      }}
+    >
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
@@ -27,25 +51,15 @@ const Footer = () => {
         showLabels
         style={{ justifyContent: "center" }}
       >
-        <StyledBottomNavigationAction
-          label="Favorites"
-          selected={value === 0}
-        />
-        <StyledBottomNavigationAction label="Support" selected={value === 1} />
-
-        <StyledBottomNavigationAction
-          label="Unsubscribe"
-          selected={value === 3}
-        />
-        <StyledBottomNavigationAction label="Account" selected={value === 4} />
-        <StyledBottomNavigationAction
-          label="Accessibility"
-          selected={value === 5}
-        />
-        <StyledBottomNavigationAction
-          label="Apply Here"
-          selected={value === 6}
-        />
+        {navItems.map((item, index) => (
+          <StyledBottomNavigationAction
+            key={index}
+            label={item.label}
+            component={Link}
+            to={item.path}
+            selected={index === value}
+          />
+        ))}
       </BottomNavigation>
     </Box>
   );

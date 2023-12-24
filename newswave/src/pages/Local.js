@@ -1,49 +1,44 @@
 import React from "react";
-import { Box, Container } from "@mui/system";
-import { Paper } from "@mui/material";
+import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-function Local() {
+import Article from "../components/Article";
+
+const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
+  const totalItems = columns * itemsPerColumn;
+
   return (
-    <Container style={{ marginTop: "3em" }}>
-      <Box>
-        <Paper elevation={5}>
-          <Grid2
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>1</Paper>
+    <Container style={{ marginTop: "3em", marginBottom: "3em" }}>
+      <Box height="100vh" overflowY="auto">
+        <Paper
+          style={{ backgroundColor: "#ffffff", margin: "16px", zIndex: 1 }}
+          elevation={10}
+        >
+          <Box>
+            <Grid2
+              container
+              rowSpacing={1}
+              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {[...Array(totalItems).keys()].map((item) => (
+                <Grid2
+                  key={item}
+                  item
+                  xs={12 / columns}
+                  sm={12 / columns}
+                  md={12 / columns}
+                >
+                  <Article />
+                </Grid2>
+              ))}
             </Grid2>
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>2</Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>3</Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>4</Paper>
-            </Grid2>
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>5</Paper>
-            </Grid2>
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>6</Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>7</Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>8</Paper>
-            </Grid2>
-          </Grid2>
+          </Box>
         </Paper>
       </Box>
     </Container>
   );
-}
+};
 
-export default Local;
+export default Home;
