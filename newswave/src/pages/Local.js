@@ -1,11 +1,13 @@
 import React from "react";
-import { Box, Container } from "@mui/system";
-import { Paper } from "@mui/material";
+import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import Article from "../components/Article";
-const Local = () => {
+
+const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
+  const totalItems = columns * itemsPerColumn;
+
   return (
-    <Container style={{ marginTop: "3em" }}>
+    <Container style={{ marginTop: "3em", marginBottom: "3em" }}>
       <Box height="100vh" overflowY="auto">
         <Paper
           style={{ backgroundColor: "#ffffff", margin: "16px", zIndex: 1 }}
@@ -20,8 +22,14 @@ const Local = () => {
               justifyContent="center"
               alignItems="center"
             >
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-                <Grid2 key={item} item xs={12} sm={6} md={3}>
+              {[...Array(totalItems).keys()].map((item) => (
+                <Grid2
+                  key={item}
+                  item
+                  xs={12 / columns}
+                  sm={12 / columns}
+                  md={12 / columns}
+                >
                   <Article />
                 </Grid2>
               ))}
@@ -33,4 +41,4 @@ const Local = () => {
   );
 };
 
-export default Local;
+export default Home;
