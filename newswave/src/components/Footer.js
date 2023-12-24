@@ -27,7 +27,15 @@ const Footer = () => {
   }, [location.pathname]);
 
   return (
-    <Box style={{ position: "fixed", bottom: 0, width: "100%" }}>
+    <Box
+      sx={{
+        position: "fixed",
+        bottom: 0,
+        width: "100%",
+        zIndex: 1000, // Adjust the z-index if needed
+      }}
+    >
+      {" "}
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {

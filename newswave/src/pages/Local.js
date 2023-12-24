@@ -6,57 +6,27 @@ import Article from "../components/Article";
 const Local = () => {
   return (
     <Container style={{ marginTop: "3em" }}>
-      <Box>
-        <Paper elevation={5}>
-          <Grid2
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
+      <Box height="100vh" overflowY="auto">
+        <Paper
+          style={{ backgroundColor: "#ffffff", margin: "16px", zIndex: 1 }}
+          elevation={10}
+        >
+          <Box>
+            <Grid2
+              container
+              rowSpacing={1}
+              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                <Grid2 key={item} item xs={12} sm={6} md={3}>
+                  <Article />
+                </Grid2>
+              ))}
             </Grid2>
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
-            </Grid2>
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
-            </Grid2>
-            <Grid2 item xs={12} sx={{ width: "100%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
-            </Grid2>
-            <Grid2 item xs={6} sx={{ width: "50%", height: "100px" }}>
-              <Paper elevation={3}>
-                <Article />
-              </Paper>
-            </Grid2>
-          </Grid2>
+          </Box>
         </Paper>
       </Box>
     </Container>
