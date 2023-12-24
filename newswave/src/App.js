@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import { Box } from "@mui/system";
 // Pages
 import Home from "./pages/Home";
-import Category from "./pages/Category";
+import Category from "./pages/Categories";
 import ArticleDetail from "./pages/ArticleDetail";
 import NotFoundPage from "./pages/NotFoundPage";
 import Local from "./pages/Local";

@@ -4,14 +4,10 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
 import CategoryIcon from "@mui/icons-material/Category";
 import NewsWaveIcon from "../assets/newswaveicon.png";
 import { Link } from "react-router-dom";
-
-const categories = ["Politics", "Business", "Technology", "Health", "Science"];
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
@@ -69,18 +65,6 @@ const Header = () => {
           >
             <CategoryIcon />
           </IconButton>
-          <Drawer anchor="top" open={openDrawer} onClose={handleCloseDrawer}>
-            {categories.map((category) => (
-              <MenuItem
-                key={category}
-                onClick={handleCloseDrawer}
-                component={Link}
-                to={`/${category.toLowerCase()}`}
-              >
-                {category}
-              </MenuItem>
-            ))}
-          </Drawer>
         </Box>
 
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -98,13 +82,13 @@ const Header = () => {
           <Button
             sx={{
               my: 2,
-              color: value === 1 ? "#7ED956" : "#000",
+              color: value === 3 ? "#7ED956" : "#000",
             }}
             component={Link}
-            to="/category"
-            onClick={() => setValue(1)}
+            to="/latest-news"
+            onClick={() => setValue(3)}
           >
-            Categories
+            Latest News
           </Button>
           <Button
             sx={{
@@ -120,13 +104,13 @@ const Header = () => {
           <Button
             sx={{
               my: 2,
-              color: value === 3 ? "#7ED956" : "#000",
+              color: value === 1 ? "#7ED956" : "#000",
             }}
             component={Link}
-            to="/latest-news"
-            onClick={() => setValue(3)}
+            to="/categories"
+            onClick={() => setValue(1)}
           >
-            Latest News
+            Categories
           </Button>
         </Box>
       </Toolbar>
