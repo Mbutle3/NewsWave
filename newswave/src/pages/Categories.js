@@ -3,7 +3,7 @@ import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import Article from "../components/Article";
 
-const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
+const Categories = ({ columns = 3, itemsPerColumn = 8 }) => {
   const totalItems = columns * itemsPerColumn;
 
   return (
@@ -41,4 +41,4 @@ const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
   );
 };
 
-export default Home;
+export default Categories;
