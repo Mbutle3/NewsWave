@@ -2,24 +2,13 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import CategoryIcon from "@mui/icons-material/Category";
 import NewsWaveIcon from "../assets/newswaveicon.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [openDrawer, setOpenDrawer] = React.useState(false);
   const [value, setValue] = React.useState(0);
-
-  const handleToggleDrawer = () => {
-    setOpenDrawer(!openDrawer);
-  };
-
-  const handleCloseDrawer = () => {
-    setOpenDrawer(false);
-  };
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "#EFEFEF" }}>
@@ -53,20 +42,6 @@ const Header = () => {
             NewsWave
           </Typography>
         </Box>
-
-        <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-          <IconButton
-            size="large"
-            aria-label="navigation menu"
-            aria-controls="menu-appbar"
-            popup="true"
-            onClick={handleToggleDrawer}
-            color="#000"
-          >
-            <CategoryIcon />
-          </IconButton>
-        </Box>
-
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
           <Button
             sx={{

@@ -4,6 +4,7 @@ const Article = () => {
   return (
     <Card>
       <CardContent>Card</CardContent>
+      <CardContent>Click For More</CardContent>
     </Card>
   );
 };
