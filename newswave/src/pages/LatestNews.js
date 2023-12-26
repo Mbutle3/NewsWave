@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import Article from "../components/Article";
+import ArticleCard from "../components/ArticleCard";
 
 const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
   const totalItems = columns * itemsPerColumn;
@@ -30,7 +30,7 @@ const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
                   sm={12 / columns}
                   md={12 / columns}
                 >
-                  <Article />
+                  <ArticleCard />
                 </Grid2>
               ))}
             </Grid2>

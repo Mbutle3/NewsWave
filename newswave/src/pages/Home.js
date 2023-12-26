@@ -1,9 +1,27 @@
 import React from "react";
 import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import Article from "../components/Article";
+import ArticleCard from "../components/ArticleCard";
+import NewsService from "../services/NewsService";
 
 const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
+  // Assuming you have an array of articles
+  const articles = [
+    {
+      id: 1,
+      title: "Article 1",
+      description: "Description 1",
+      urlToImage: "image1.jpg",
+    },
+    {
+      id: 2,
+      title: "Article 2",
+      description: "Description 2",
+      urlToImage: "image2.jpg",
+    },
+    // ... other articles
+  ];
+
   const totalItems = columns * itemsPerColumn;
 
   return (
@@ -22,15 +40,15 @@ const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
               justifyContent="center"
               alignItems="center"
             >
-              {[...Array(totalItems).keys()].map((item) => (
+              {articles.slice(0, totalItems).map((article) => (
                 <Grid2
-                  key={item}
+                  key={article.id}
                   item
                   xs={12 / columns}
                   sm={12 / columns}
                   md={12 / columns}
                 >
-                  <Article />
+                  <ArticleCard article={article} />
                 </Grid2>
               ))}
             </Grid2>
