@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 const NewsAPI = require("newsapi");
+const axios = require("axios/dist/node/axios.cjs");
 
-const NewsService = ({
+
+const NewsService = async ({
   sources,
   id,
   query,

@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import ArticleCard from "../components/ArticleCard";
 import NewsService from "../services/NewsService";
 
-const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
-  // Assuming you have an array of articles
-  const articles = [
-    {
-      id: 1,
-      title: "Article 1",
-      description: "Description 1",
-      urlToImage: "image1.jpg",
-    },
-    {
-      id: 2,
-      title: "Article 2",
-      description: "Description 2",
-      urlToImage: "image2.jpg",
-    },
-    // ... other articles
-  ];
+function Home({ columns = 3, itemsPerColumn = 8 }) {
+  const [newsData, setNewsData] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await NewsService({
+          sources: "bbc-news,the-verge",
+          // Add other parameters as needed
+        });
+        setNewsData(response.articles);
+      } catch (error) {
+        console.error("Error fetching news data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   const totalItems = columns * itemsPerColumn;
 
   return (
@@ -40,9 +40,9 @@ const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
               justifyContent="center"
               alignItems="center"
             >
-              {articles.slice(0, totalItems).map((article) => (
+              {newsData.slice(0, totalItems).map((article) => (
                 <Grid2
-                  key={article.id}
+                  key={article.title}
                   item
                   xs={12 / columns}
                   sm={12 / columns}
@@ -57,6 +57,6 @@ const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
       </Box>
     </Container>
   );
-};
+}
 
 export default Home;
