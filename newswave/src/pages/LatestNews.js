@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import ArticleCard from "../components/ArticleCard";
 
-const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
+function LatestNews({ columns = 3, itemsPerColumn = 8 }) {
+  const [newsData, setNewsData] = useState([]);
   const totalItems = columns * itemsPerColumn;
+
+  const getCurrentDate = () => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  useEffect(() => {
+    const fetchNewsData = async () => {
+      const apiKey = "8c7fc3d767634a56ae05209f95528db8"; // Add your API key
+      const currentDate = getCurrentDate();
+      const url = `https://newsapi.org/v2/everything?q=News&from=${currentDate}&to=${currentDate}&sortBy=popularity&apiKey=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setNewsData(data.articles); // Set the state after parsing the JSON response
+      } catch (error) {
+        throw new Error(`Error fetching news data: ${error.message}`);
+      }
+    };
+
+    fetchNewsData();
+  }, []);
 
   return (
     <Container style={{ marginTop: "3em", marginBottom: "3em" }}>
@@ -14,31 +41,23 @@ const Home = ({ columns = 3, itemsPerColumn = 8 }) => {
           elevation={10}
         >
           <Box>
-            <Grid2
-              container
-              rowSpacing={1}
-              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              {[...Array(totalItems).keys()].map((item) => (
+            {newsData &&
+              newsData.slice(0, totalItems).map((article) => (
                 <Grid2
-                  key={item}
+                  key={article.title}
                   item
                   xs={12 / columns}
                   sm={12 / columns}
                   md={12 / columns}
                 >
-                  <ArticleCard />
+                  <ArticleCard article={article} />
                 </Grid2>
               ))}
-            </Grid2>
           </Box>
         </Paper>
       </Box>
     </Container>
   );
-};
+}
 
-export default Home;
+export default LatestNews;

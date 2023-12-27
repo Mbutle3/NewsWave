@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Container, Box, Paper } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import ArticleCard from "../components/ArticleCard";
-import NewsService from "../services/NewsService";
 
 function Home({ columns = 3, itemsPerColumn = 8 }) {
   const [newsData, setNewsData] = useState([]);
+  const totalItems = columns * itemsPerColumn;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await NewsService({
-          sources: "bbc-news,the-verge",
-          // Add other parameters as needed
-        });
+        // Perform your data fetching here
+        const response = await fetchNewsData("bbc-news,cnn,the-verge");
         setNewsData(response.articles);
       } catch (error) {
         console.error("Error fetching news data:", error);
@@ -21,8 +19,22 @@ function Home({ columns = 3, itemsPerColumn = 8 }) {
     };
 
     fetchData();
-  }, []);
-  const totalItems = columns * itemsPerColumn;
+  }, [columns, itemsPerColumn]);
+
+  // Replace this function with your actual data fetching logic
+  const fetchNewsData = async (sources) => {
+    // Implement your data fetching logic here
+    const apiKey = "8c7fc3d767634a56ae05209f95528db8"; // Add your API key
+    const url = `https://newsapi.org/v2/top-headlines?sources=${sources}&apiKey=${apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error(`Error fetching news data: ${error.message}`);
+    }
+  };
 
   return (
     <Container style={{ marginTop: "3em", marginBottom: "3em" }}>
@@ -32,15 +44,8 @@ function Home({ columns = 3, itemsPerColumn = 8 }) {
           elevation={10}
         >
           <Box>
-            <Grid2
-              container
-              rowSpacing={1}
-              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              {newsData.slice(0, totalItems).map((article) => (
+            {newsData &&
+              newsData.slice(0, totalItems).map((article) => (
                 <Grid2
                   key={article.title}
                   item
@@ -51,7 +56,6 @@ function Home({ columns = 3, itemsPerColumn = 8 }) {
                   <ArticleCard article={article} />
                 </Grid2>
               ))}
-            </Grid2>
           </Box>
         </Paper>
       </Box>
