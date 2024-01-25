@@ -25,7 +25,7 @@ function Home({ columns = 3, itemsPerColumn = 8 }) {
   const fetchNewsData = async (sources) => {
     // Implement your data fetching logic here
     const apiKey = "8c7fc3d767634a56ae05209f95528db8"; // Add your API key
-    const url = `https://newsapi.org/v2/top-headlines?sources=${sources}&apiKey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=hbcu&apiKey=${apiKey}`;
 
     try {
       const response = await fetch(url);
